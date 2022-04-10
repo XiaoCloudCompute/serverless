@@ -16,5 +16,5 @@ Resources:
           Type: SNS
           Properties:
             Topic: arn:aws:sns:us-east-1:351248346419:createUser
-    Policies:
-      - SESCrudPolicy
+      Policies:
+        - SESCrudPolicy
