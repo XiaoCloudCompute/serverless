@@ -24,7 +24,7 @@ def lambda_handler(event, context):
         return {"status": "system error"}
     else:
         item = response.get('Item')
-        if not item:
+        if item:
             print("Email duplication")
             return {"status": "duplicate"}
     
@@ -94,7 +94,7 @@ def lambda_handler(event, context):
             },
             Source=SENDER,
         )
-        response = table.put_item(
+        res = table.put_item(
             Item={
                 'username': RECIPIENT,
             }
