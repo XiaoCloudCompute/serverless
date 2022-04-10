@@ -1,5 +1,4 @@
 import json
-from urllib.parse import quote
 import boto3
 from botocore.exceptions import ClientError
 
@@ -23,7 +22,7 @@ def lambda_handler(event, context):
     SUBJECT = "Account verify email"
     
     # The email body for recipients with non-HTML email clients.
-    BODY_TEXT = "please click http://{} to verify your account".format(quote(f"{email_data['domain']}/v1/verifyUserEmail?email={email_data['username']}&token={email_data['token']}"))
+    BODY_TEXT = "please click http://{} to verify your account".format(f"{email_data['domain']}/v1/verifyUserEmail?email={email_data['username']}&token={email_data['token']}")
     
     # The character encoding for the email.
     CHARSET = "UTF-8"
