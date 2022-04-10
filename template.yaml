@@ -22,4 +22,6 @@ Resources:
             Action:
               - "ses:SendEmail"
               - "ses:SendRawEmail"
+              - "dynamodb:GetItem"
+              - "dynamodb:PutItem"
             Resource: "*"
