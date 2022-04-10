@@ -20,9 +20,13 @@ def lambda_handler(event, context):
     try:
         response = table.get_item(Key={'username': RECIPIENT})
     except ClientError as e:
-        pass
+        print(e.response['Error']['Message'])
+        return {"status": "system error"}
     else:
-        return {"status": "duplicate"}
+        item = response.get('Item')
+        if not item:
+            print("Email duplication")
+            return {"status": "duplicate"}
     
     # If necessary, replace us-west-2 with the AWS Region you're using for Amazon SES.
     AWS_REGION = "us-east-1"
